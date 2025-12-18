@@ -20,9 +20,11 @@ Before getting started, ensure you have:
 
 ### Install kubectl
 
-Follow the [official kubectl installation guide](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) for your OS.
+Follow the [official kubectl installation guide](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/)
+for your OS.
 
 **Linux example:**
+
 ```bash
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
@@ -33,88 +35,103 @@ kubectl version --client
 
 ### What is k3d?
 
-k3d is a lightweight container orchestration tool that simplifies running k3s clusters in Docker. k3s is a minimal, certified Kubernetes distribution optimized for resource-constrained environments. k3d wraps k3s and makes it easy to create, manage, and test Kubernetes clusters locally by running them inside Docker containers.
+k3d is a lightweight container orchestration tool that simplifies running k3s
+clusters in Docker. k3s is a minimal, certified Kubernetes distribution
+optimized for resource-constrained environments. k3d wraps k3s and makes it
+easy to create, manage, and test Kubernetes clusters locally by running them
+inside Docker containers.
 
 ### Install k3d
 
 **macOS (Homebrew):**
+
 ```bash
 brew install k3d
 ```
 
 **Linux:**
+
 ```bash
 curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
 ```
 
 **Windows (Chocolatey):**
+
 ```bash
 choco install k3d
 ```
 
 See [k3d releases](https://github.com/k3d-io/k3d/releases) for additional options.
 
-### Create a Cluster
+### Create a k3d Cluster
 
-Simple single-node cluster:
 ```bash
 k3d cluster create mycluster
 ```
 
 Multi-node cluster with 3 servers and 2 agents:
+
 ```bash
 k3d cluster create mycluster --servers 3 --agents 2
 ```
 
-### Verify Cluster
+### Verify k3d Cluster
 
 ```bash
 kubectl cluster-info
 kubectl get nodes
 ```
 
-### Delete Cluster
+### Delete k3d Cluster
 
 ```bash
 k3d cluster delete mycluster
 ```
 
-For advanced configurations, visit the [k3d documentation](https://k3d.io/).
+For advanced configurations, visit the
+[k3d documentation](https://k3d.io/).
 
 ## kind Setup
 
 ### What is kind?
 
-kind (Kubernetes in Docker) is a tool for running local Kubernetes clusters using Docker containers as cluster nodes. It's designed for testing Kubernetes itself, but is also good for local development.
+kind (Kubernetes in Docker) is a tool for running local Kubernetes clusters
+using Docker containers as cluster nodes. It's designed for testing Kubernetes
+itself, but is also good for local development.
 
 ### Install kind
 
 **Homebrew (macOS/Linux):**
+
 ```bash
 brew install kind
 ```
 
 **Using Go:**
+
 ```bash
 go install sigs.k8s.io/kind@latest
 ```
 
-See [kind releases](https://github.com/kubernetes-sigs/kind/releases) for other options.
+See [kind releases](https://github.com/kubernetes-sigs/kind/releases) for
+other options.
 
 ### Create a Cluster
+
+### Create a kind Cluster
 
 ```bash
 kind create cluster --name my-cluster
 ```
 
-### Verify Cluster
+### Verify kind Cluster
 
 ```bash
 kubectl cluster-info
 kubectl get nodes
 ```
 
-### Delete Cluster
+### Delete kind Cluster
 
 ```bash
 kind delete cluster --name my-cluster

@@ -1,4 +1,7 @@
+# Pull Request
+
 ## Description
+
 <!-- Brief description of your changes -->
 
 ## Type of Change
@@ -13,12 +16,15 @@
 <!-- Link to any related issues: Closes #123 -->
 
 ## Testing
+
 <!-- How did you test your changes? -->
+
 - [ ] Validated with `kubectl apply --dry-run=client`
 - [ ] Tested with k3d/kind cluster
 - [ ] No breaking changes
 
 ## Checklist
+
 - [ ] I have read the CONTRIBUTING guidelines
 - [ ] My manifests are valid YAML
 - [ ] I have tested my changes locally

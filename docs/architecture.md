@@ -4,7 +4,7 @@ This document outlines the structure and design of the localhost-k8s project.
 
 ## Project Structure
 
-```
+```yaml
 localhost-k8s/
 ├── README.md              # Main project documentation
 ├── CONTRIBUTING.md        # Contribution guidelines
@@ -22,7 +22,8 @@ localhost-k8s/
 
 ## Overview
 
-This project provides configuration and documentation for running Kubernetes clusters locally using tools like k3d or kind. It serves as a reference for:
+This project provides configuration and documentation for running Kubernetes
+clusters locally using tools like k3d or kind. It serves as a reference for:
 
 - Local Kubernetes development
 - Testing Kubernetes manifests
@@ -31,7 +32,8 @@ This project provides configuration and documentation for running Kubernetes clu
 
 ## Kubernetes Manifests
 
-All Kubernetes manifests are YAML files that define resources to be deployed on a cluster. Current manifests include:
+All Kubernetes manifests are YAML files that define resources to be deployed
+on a cluster. Current manifests include:
 
 - **Ingress configurations**: Network traffic routing rules
 - Additional components as the project grows

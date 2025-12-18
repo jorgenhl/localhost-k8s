@@ -1,6 +1,7 @@
 # Contributing
 
-Thank you for your interest in contributing! Here are some guidelines to help you get started.
+Thank you for your interest in contributing! Here are some guidelines to help
+you get started.
 
 ## How to Contribute
 
@@ -27,6 +28,7 @@ Thank you for your interest in contributing! Here are some guidelines to help yo
 ## Reporting Issues
 
 Please use GitHub Issues to report bugs or request features. Include:
+
 - Clear description of the issue
 - Steps to reproduce (if applicable)
 - Your environment (OS, Kubernetes version, etc.)
