@@ -1,36 +1,62 @@
 # Copilot CLI Custom Instructions
 
-## Markdown Linting
+## Pre-Commit Validation Checklist
 
-Before committing changes to git, ensure all markdown files are validated using
-markdown linting.
+Before committing any changes to git, perform the following validation steps
+that match the GitHub Actions CI/CD pipeline:
 
-### Required Steps Before Commit
+### 1. Markdown Linting
 
-1. Run markdown lint on all markdown files:
+Validate all markdown files using markdown linting:
 
-   ```bash
-   find . -name "*.md" -type f | xargs markdownlint
-   ```
+```bash
+find . -name "*.md" -type f | xargs markdownlint
+```
 
-2. Fix any linting issues found by markdownlint, or use auto-fix if available:
+If linting errors are found, auto-fix them:
 
-   ```bash
-   find . -name "*.md" -type f | xargs markdownlint --fix
-   ```
+```bash
+find . -name "*.md" -type f | xargs markdownlint --fix
+```
 
-3. Review the changes to ensure markdown formatting is correct and consistent.
+**Why**: Ensures consistent markdown formatting and style across all
+documentation files.
 
-4. Only commit to git after all markdown files pass linting validation.
+### 2. YAML Syntax Validation
 
-### Configuration
+Validate YAML syntax using kubectl dry-run for Kubernetes manifests:
 
-This project uses markdown linting to maintain consistent formatting and style
-across all markdown documentation files. All changes to `.md` files must pass
-markdown linting before being committed.
+```bash
+find . -name '*.yaml' -o -name '*.yml' | while read file; do
+  echo "Validating $file..."
+  kubectl apply --dry-run=client -f "$file" || exit 1
+done
+```
 
-### Pre-commit Hook (Optional)
+**Why**: Ensures all Kubernetes manifests are valid before deployment.
 
-To automatically enforce markdown linting before commits, consider using a
-pre-commit hook by creating a `.git/hooks/pre-commit` file or using a tool
-like husky with a pre-commit hook script.
+### 3. YAML Formatting Check
+
+Check YAML formatting with yamllint:
+
+```bash
+yamllint .
+```
+
+Configuration enforces:
+
+- Default yamllint rules
+- Indentation: 2 spaces
+- Line length: disabled
+
+**Why**: Maintains consistent YAML formatting across the project.
+
+## Summary
+
+Before committing, verify:
+
+- ✅ All markdown files pass `markdownlint`
+- ✅ All YAML files pass `kubectl apply --dry-run=client`
+- ✅ All YAML files pass `yamllint`
+
+Only commit to git after all validations pass.
