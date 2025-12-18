@@ -1,0 +1,20 @@
+# Kubernetes - only ignore kubeconfig and cluster files, NOT manifests
+kubeconfig
+kubeconfig.yaml
+.kube/
+*.kubeconfig
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Build artifacts
+dist/
+build/
+*.o
+*.a
+

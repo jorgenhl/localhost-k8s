@@ -1,97 +1,35 @@
-# Config for setup localhost kubernetes cluster
+# localhost-k8s
 
-## k3d
+Configuration and documentation for running Kubernetes clusters locally for development, homelab, and prototyping.
 
-k3d is a lightweight container orchestration tool that simplifies running k3s
-clusters in Docker. k3s is a minimal, certified Kubernetes distribution
-optimized for resource-constrained environments. k3d wraps k3s and makes it
-easy to create, manage, and test Kubernetes clusters locally by running them
-inside Docker containers. This approach is ideal for development, testing, and
-CI/CD workflows, allowing developers to quickly spin up multi-node Kubernetes
-clusters without the overhead of full Kubernetes installations. k3d is
-particularly useful for local development and learning Kubernetes concepts
-with minimal resource requirements.
+## Overview
 
-### Getting Started
+This project provides manifests and guides for setting up local Kubernetes environments using tools like **k3d** and **kind**. Perfect for:
 
-#### Prerequisites
+- Local Kubernetes development and testing
+- Homelab experiments and learning
+- Prototyping cloud-native applications
+- CI/CD pipeline development
 
-Before setting up k3d, ensure you have `kubectl` installed. kubectl is the
-command-line tool for interacting with Kubernetes clusters.
+## Quick Start
 
-**Install kubectl:**
+See [Setup Guide](docs/setup.md) for detailed installation and cluster creation instructions.
 
-Follow the [official kubectl installation
-guide](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/) for
-your operating system. For Linux, you can use:
+## Documentation
 
-```bash
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
-```
+- **[Setup Guide](docs/setup.md)** - Installation and configuration for k3d and kind
+- **[Architecture](docs/architecture.md)** - Project structure and design principles
+- **[Troubleshooting](docs/troubleshooting.md)** - Common issues and solutions
 
-Verify the installation:
+## Contributing
 
-```bash
-kubectl version --client
-```
+We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
-#### Installation
+## License
 
-Install k3d using your package manager or download from the [official
-releases](https://github.com/k3d-io/k3d/releases):
+Licensed under the MIT License. See [LICENSE](LICENSE) for details.
 
-**macOS (Homebrew):**
+---
 
-```bash
-brew install k3d
-```
+*This README was created with assistance from GitHub Copilot.*
 
-**Linux:**
-
-```bash
-curl -s https://raw.githubusercontent.com/k3d-io/k3d/main/install.sh | bash
-```
-
-**Windows (Chocolatey):**
-
-```bash
-choco install k3d
-```
-
-#### Create a Cluster
-
-Create a simple single-node cluster:
-
-```bash
-k3d cluster create mycluster
-```
-
-Create a cluster with multiple servers and agents:
-
-```bash
-k3d cluster create mycluster --servers 3 --agents 2
-```
-
-#### Interact with Your Cluster
-
-Once created, your kubeconfig is automatically configured. Verify the
-cluster is running:
-
-```bash
-kubectl cluster-info
-kubectl get nodes
-```
-
-#### Delete a Cluster
-
-Remove a cluster when you're done:
-
-```bash
-k3d cluster delete mycluster
-```
-
-For more advanced configurations and options, visit the [k3d
-documentation](https://k3d.io/).
-
-## kind

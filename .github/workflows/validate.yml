@@ -1,0 +1,36 @@
+name: Validate Kubernetes Manifests
+
+on:
+  push:
+    branches: [ main, develop ]
+    paths: [ '**.yaml', '**.yml' ]
+  pull_request:
+    branches: [ main, develop ]
+    paths: [ '**.yaml', '**.yml' ]
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up kubectl
+        uses: azure/setup-kubectl@v3
+
+      - name: Validate YAML syntax
+        run: |
+          find . -name '*.yaml' -o -name '*.yml' | while read file; do
+            echo "Validating $file..."
+            kubectl apply --dry-run=client -f "$file" || exit 1
+          done
+
+      - name: Check YAML formatting
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: '.'
+          config_data: |
+            extends: default
+            rules:
+              line-length: disable
+              indentation:
+                spaces: 2

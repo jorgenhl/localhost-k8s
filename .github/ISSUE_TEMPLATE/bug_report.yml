@@ -1,0 +1,60 @@
+---
+name: Bug Report
+description: Report a bug or issue
+title: "[BUG] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: "## Bug Report"
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: Clear description of the issue
+      placeholder: What went wrong?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: Steps to reproduce the behavior
+      placeholder: |
+        1. Create cluster with...
+        2. Apply manifest...
+        3. Observe error...
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: |
+        - OS: (e.g., Ubuntu 22.04)
+        - Kubernetes version: (e.g., 1.28)
+        - k3d/kind version:
+      placeholder: |
+        - OS: 
+        - Kubernetes version:
+        - Tool version:
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant Logs
+      description: Any relevant error messages or logs
+      render: shell
