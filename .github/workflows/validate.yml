@@ -20,7 +20,8 @@ jobs:
 
       - name: Validate YAML syntax
         run: |
-          find . -name '*.yaml' -o -name '*.yml' | while read file; do
+          find . -name '*.yaml' -o -name '*.yml' |
+            grep -v '.github' | while read file; do
             echo "Validating $file..."
             kubectl apply --dry-run=client -f "$file" || exit 1
           done
