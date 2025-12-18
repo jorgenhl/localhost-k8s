@@ -1,12 +1,13 @@
+---
 name: Validate Kubernetes Manifests
 
 on:
   push:
-    branches: [ main, develop ]
-    paths: [ '**.yaml', '**.yml' ]
+    branches: [main, develop]
+    paths: ['**.yaml', '**.yml']
   pull_request:
-    branches: [ main, develop ]
-    paths: [ '**.yaml', '**.yml' ]
+    branches: [main, develop]
+    paths: ['**.yaml', '**.yml']
 
 jobs:
   validate:

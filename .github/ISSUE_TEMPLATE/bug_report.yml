@@ -46,7 +46,7 @@ body:
         - Kubernetes version: (e.g., 1.28)
         - k3d/kind version:
       placeholder: |
-        - OS: 
+        - OS:
         - Kubernetes version:
         - Tool version:
     validations:
